@@ -7,7 +7,6 @@ jobs:
     steps:
       - uses: davidslusser/actions_python_mypy@v1.0.1
         with:
-          src: "src/django_project"
-          options: ""
+          src: "src"
+          options: "-v"
           pip_install_command: "pip install -e .[dev]"
-          python_version: "3.11"

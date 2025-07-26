@@ -1,6 +1,6 @@
-# Contributing to django-pygwalker
+# Contributing to SpokanePython
 
-First off, thank you for considering contributing to django-pygwalker!
+First off, thank you for considering contributing to SpokanePython!
 
 The following is a set of guidelines for contributing to this project. These are just guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
@@ -27,22 +27,22 @@ This project and everyone participating in it are governed by the [Code of Condu
 
 ### Reporting Bugs
 
-- Before creating bug reports, please check the [existing issues](https://github.com/djangoaddicts/django-pygwalker/issues) as you might find that the issue has already been reported.
+- Before creating bug reports, please check the [existing issues](https://github.com/SpokaneTech/SpokaneTechWeb/issues) as you might find that the issue has already been reported.
 - When creating a bug report, please include a clear and concise description of the problem and steps to reproduce it.
 
 ### Suggesting Enhancements
 
-- Before creating enhancement suggestions, please check the [list of open issues](https://github.com/djangoaddicts/django-pygwalker/issues) as you might find that the suggestion has already been made.
+- Before creating enhancement suggestions, please check the [list of open issues](https://github.com/SpokaneTech/SpokaneTechWeb/issues) as you might find that the suggestion has already been made.
 - When creating an enhancement suggestion, please provide a detailed description and, if possible, an implementation proposal.
 
 ### Pull Requests
 
 - Provide a clear and concise description of your pull request.
 - Ensure you have tested your changes thoroughly.
-- Add/update unittests as nessessary.
-- Make sure code quaility tools run successfully. 
+- Add/update unittests as necessary.
+- Make sure code quality tools run successfully. 
 
-    Merging contributions requires passing the checks configured with the CI. This includes running tests, linters, and other code quaility tools successfully on the currently officially supported Python and Django versions.
+    Merging contributions requires passing the checks configured with the CI. This includes running tests, linters, and other code quality tools successfully on the currently officially supported Python and Django versions.
 
 <br/>
 
@@ -51,16 +51,16 @@ This project and everyone participating in it are governed by the [Code of Condu
 You can contribute to this project forking it from GitHub and sending pull requests.
 
 First [fork](https://help.github.com/en/articles/fork-a-repo) the
-[repository](https://github.com/djangoaddicts/django-pygwalker) and then clone it:
+[repository](https://github.com/SpokaneTech/SpokaneTechWeb) and then clone it:
 
 ```shell
-git clone git@github.com:<you>/django-pygwalker.git
+git clone git@github.com:<you>/SpokanePython.git
 ```
 
-Create a virtual environment and install dependancies:
+Create a virtual environment and install dependencies:
 
 ```shell
-cd django-pygwalker
+cd SpokanePythonWeb
 python -m venv venv
 source venv/bin/activate
 pip install .[dev]
