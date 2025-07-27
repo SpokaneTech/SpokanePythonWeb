@@ -1,0 +1,681 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="keywords" content="spokane, spokanetech, python, coding, software, developers, tech, technology">
+    <meta property="og:title" content="Spokane Python User Group">
+    <meta property="og:description" content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'spokanepython/img/favicon.png' %}">
+
+    <title>Spokane Python User Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="spug.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'spokanepython/css/spug.css' %}">
+    <style>
+        body {
+            padding-top: 70px;
+            background-color: #f1f1f1
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Ubuntu', Arial, sans-serif;
+            padding-top: 70px;
+        }
+
+        .hero {
+            background: #f0f0f0;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-top: 56px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            body {
+                padding-top: 48px;
+            }
+        }
+    </style>
+
+    <style>
+        .scroll-wrapper {
+            position: relative;
+        }
+
+        .scroll-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 2.5rem;
+        }
+
+        .scroll-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+        }
+
+        .scroll-card {
+            flex: 0 0 auto;
+            width: 350px;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: var(--bs-primary);
+            color: white;
+            border-radius: 0.375rem;
+        }
+
+        .scroll-btn.left {
+            left: 0;
+            opacity: 0.5;
+        }
+
+        .scroll-btn.right {
+            right: 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid mx-2 my-2">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="fa-brands fa-python me-2"></i>Spokane Python
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li> -->
+                    <!-- <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="#upcoming-events">Upcoming Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#past-events">Past Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#get-involved">Get Involved</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero" style="background: linear-gradient(135deg, #3776AB 0%, #103069 100%);">
+        <div class="container">
+            <h1 class="display-3 text-white fw-bold"><span class="text-warning"><i
+                        class="fa-brands fa-python me-2"></i></span></h1>
+            <h1 class="display-3 text-white fw-bold">Welcome to <span class="text-warning">Spokane Python User
+                    Group</span></h1>
+            <p class="lead text-white py-3">A vibrant community of Python enthusiasts, learners, and professionals. Join
+                us for engaging talks, workshops, and networking opportunities.</p>
+            <a href="https://www.meetup.com/python-spokane/" target="_blank" class="btn btn-primary btn-lg shadow">Join Us</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-5 bg-light">
+        <div class="container py-3">
+            <h1 class="section-title fw-bold text-center text-primary">Our Mission</h1>
+            <!-- <p class="text-center pb-2">To foster a vibrant community of technology professionals and enthusiasts in Spokane by providing opportunities for collaboration, education, and innovation.</p> -->
+
+            <p class="text-center text-secondary pb-3">As a local chapter of the Python Software Foundation, we're
+                dedicated to
+                promoting, protecting, and advancing the Python programming language and supporting the growth of a
+                diverse community of Python programmers.</p>
+            <div class="row text-center mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center mb-3 alert alert-primary p-0 border-0"
+                            style="width:64px; height:64px; background-color: var(--bs-primary-bg-subtle);">
+                            <i class="fa-solid fa-users" style="color: var(--bs-primary-text); font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Community</h5>
+                        <p class="text-secondary">Building connections between Python developers of all skill levels</p>
+                    </div>
+
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center mb-3 alert alert-warning p-0 border-0"
+                            style="width:64px; height:64px; background-color: var(--bs-warning-bg-subtle);">
+                            <i class="fa-solid fa-graduation-cap"
+                                style="color: var(--bs-warning-text); font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Education</h5>
+                        <p class="text-secondary">Sharing knowledge through talks, workshops, and mentorship</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center mb-3 alert alert-success p-0 border-0"
+                            style="width:64px; height:64px; background-color: var(--bs-success-bg-subtle);">
+                            <i class="fa-solid fa-lightbulb"
+                                style="color: var(--bs-success-text); font-size: 2rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Innovation</h5>
+                        <p class="text-secondary">Exploring new technologies and advancing Python's ecosystem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="upcoming-events" class="py-5">
+        <div class="container my-3">
+
+            <h1 class="section-title fw-bold text-center text-primary">Upcoming Events</h1>
+            <p class="text-center text-secondary mb-5">Join us for our next meetups and workshops</p>
+
+            <div class="scroll-wrapper">
+
+                <!-- Scroll Buttons -->
+                <button class="scroll-btn left" id="scrollLeft" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right" id="scrollRight" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Scrollable Cards -->
+                <div class="scroll-container" id="cardScrollContainer">
+                    <div class="scroll-row" id="cardRow">
+
+                        <!-- Card 1 -->
+                        <div class="card scroll-card shadow">
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-secondary text-start mb-3">June 15, 2024</div>
+                                <h4 class="card-title fw-bold mb-3">Django Best Practices for Beginners</h4>
+                                <p class="card-text mb-4">
+                                    Learn the fundamentals of Django web framework and best practices for building
+                                    scalable
+                                    web applications
+                                </p>
+                                <div class="mt-auto">
+                                    <p class="text-secondary"><i class="fa-regular fa-clock me-2"></i>6:00 PM - 8:00 PM
+                                    </p>
+                                    <p class="text-secondary"><i class="fa-solid fa-location-dot me-2"></i>Community
+                                        Center
+                                        Room A</p>
+                                    <a href="#" class="mt-2 btn btn-primary w-100">RSVP Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card scroll-card shadow">
+                            <div class="card-body d-flex flex-column">
+                                <div class="text-secondary text-start mb-3">June 15, 2024</div>
+                                <h4 class="card-title fw-bold mb-3">Django Best Practices for Beginners</h4>
+                                <p class="card-text mb-4">
+                                    a short description
+                                </p>
+                                <div class="mt-auto">
+                                    <p class="text-secondary"><i class="fa-regular fa-clock me-2"></i>6:00 PM - 8:00 PM
+                                    </p>
+                                    <p class="text-secondary"><i class="fa-solid fa-location-dot me-2"></i>Community
+                                        Center
+                                        Room A</p>
+                                    <a href="#" class="mt-2 btn btn-primary w-100">RSVP Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="card scroll-card shadow">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-3 text-secondary text-start mb-3">August 5, 2024</div>
+                                <h4 class="card-title fw-bold mb-3">Event Three</h4>
+                                <p>A shorter description.</p>
+                                <div class="mt-auto">
+                                    <p class="text-secondary"><i class="fa-regular fa-clock me-2"></i>6:00 PM - 8:00 PM
+                                    </p>
+                                    <p class="text-secondary"><i class="fa-solid fa-location-dot me-2"></i>Community
+                                        Center
+                                        Room A</p>
+                                    <a href="#" class="mt-2 btn btn-primary w-100">RSVP Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Past Events Section -->
+    <section id="past-events" class="py-5 bg-light">
+        <div class="container py-3">
+            <h1 class="section-title fw-bold text-center text-primary">Past Events</h1>
+            <p class="text-center text-secondary mb-5">Check out what we've been up to</p>
+
+            <ul class="list-group list-group-flush spaced-bordered-items" style="max-height: 400px; overflow-y: auto;">
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">May 2024: Cloud Computing Panel
+                </li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">April 2024: Python for Beginners
+                    Workshop</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">March 2024: Tech Career Fair</li>
+                <!-- Add more events here to see scroll in action -->
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">May 2024: Cloud Computing Panel
+                </li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">April 2024: Python for Beginners
+                    Workshop</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">March 2024: Tech Career Fair</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">May 2024: Cloud Computing Panel
+                </li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">April 2024: Python for Beginners
+                    Workshop</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">March 2024: Tech Career Fair</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">May 2024: Cloud Computing Panel
+                </li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">April 2024: Python for Beginners
+                    Workshop</li>
+                <li class="mx-3 list-group-item shadow-sm hover-grow hover-bg-light">March 2024: Tech Career Fair</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- Learning Resources Section -->
+    <section id="resources" class="py-5">
+        <div class="container py-3">
+            <h1 class="section-title fw-bold text-center text-primary">Learning Resources</h1>
+            <p class="text-center text-secondary mb-5">Curated materials to help you on your Python journey</p>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-primary); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-primary-text-emphasis);"><span class="me-3"><i
+                                        class="fa-solid fa-seedling"></i></span>Beginners</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-primary" >Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-primary">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-secondary); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-secondary-text-emphasis);"><span class="me-3"><i
+                                        class="fa-solid fa-rocket"></i></span>Intermediate</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-secondary">Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-secondary">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-info); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-info-text-emphasis);"><span class="me-3"><i
+                                        class="fa-solid fa-gear"></i></span>Advanced</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-info">Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-info">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-success); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-success-text-emphasis);"><span class="me-3"><i
+                                        class="fa-solid fa-box-open"></i></span>Popular Packages</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-success">Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-success">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-warning); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-warning-text-emphasis);"><span class="me-3"><i
+                                        class="fa-solid fa-chart-column"></i></span>Data Science</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-warning">Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-warning">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" style="background: var(--gradient-danger); height: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-danger-text-emphasis)"><span class="me-3"><i
+                                        class="fa-solid fa-code"></i></span>Web Development</h5>
+                            <div class="card-text">
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-danger">Item One</a><br />
+                                    <span class="text-muted">A brief description of Item One.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#" class="note-link-danger">Item Two</a><br />
+                                    <span class="text-muted">A brief description of Item Two.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="py-5 bg-light">
+        <div class="container py-3">
+            <h1 class="section-title fw-bold text-center text-primary">Get Involved</h1>
+            <p class="text-center text-secondary mb-5">Help shape our community by suggesting topics or volunteering to
+                present</p>
+
+            <div class="row">
+                <div class="col-md-6 mb-3 d-flex">
+                    <div class="card shadow h-100 w-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-4">
+                                <i class="fa-solid fa-lightbulb text-secondary me-3"></i>Suggest a Topic
+                            </h5>
+                            <form class="d-flex flex-column h-100">
+                                <div class="flex-grow-1">
+                                    <div class="mb-3">
+                                        <label for="suggestTopic2" class="form-label fw-bold">Topic Suggestion</label>
+                                        <input type="text" class="form-control" id="suggestTopic2"
+                                            placeholder="What topic would you like to see?" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="suggestDescription" class="form-label fw-bold">Description</label>
+                                        <textarea class="form-control" id="suggestDescription" rows="3"
+                                            placeholder="Share more about your topic suggestion"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="suggestSkillLevel" class="form-label fw-bold">Skill Level</label>
+                                        <select class="form-select" id="suggestSkillLevel" required>
+                                            <option value="" disabled selected>Select skill level</option>
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="suggestName" class="form-label fw-bold">Your Name</label>
+                                        <input type="text" class="form-control" id="suggestName"
+                                            placeholder="Enter your name" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-warning w-100 mt-3">Submit Suggestion</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3 d-flex">
+                    <div class="card shadow h-100 w-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-4">
+                                <i class="fa-solid fa-microphone text-secondary me-3"></i>Volunteer to Present
+                            </h5>
+                            <form class="d-flex flex-column h-100">
+                                <div class="flex-grow-1">
+                                    <div class="mb-3">
+                                        <label for="presenterName" class="form-label fw-bold">Your Name</label>
+                                        <input type="text" class="form-control" id="presenterName"
+                                            placeholder="Enter your full name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="presenterEmail" class="form-label fw-bold">Your Email</label>
+                                        <input type="email" class="form-control" id="presenterEmail"
+                                            placeholder="Enter your email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="presentationTitle" class="form-label fw-bold">Presentation Title</label>
+                                        <input type="text" class="form-control" id="presentationTitle"
+                                            placeholder="Your presentation title" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="presentationDescription" class="form-label fw-bold">Description</label>
+                                        <textarea class="form-control" id="presentationDescription" rows="3"
+                                            placeholder="Brief summary of your presentation"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="presentationTargetAudience" class="form-label fw-bold">Target
+                                            Audience</label>
+                                        <select class="form-select" id="presentationTargetAudience" required>
+                                            <option value="" disabled selected>Select target audience</option>
+                                            <option value="beginners">Beginners</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mt-3">Submit Proposal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="resources" class="py-5">
+        <div class="container py-3">
+            <h1 class="section-title fw-bold text-center text-primary">Connect with Us</h1>
+            <p class="text-center text-secondary mb-5">Find us, follow us, and join our community</p>
+            <div class="row text-center mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex flex-column align-items-start mb-3">
+                        <h5 class="fw-bold mb-2">Looking for more local tech?</h5>
+                        <div class="d-flex flex-column align-items-start mb-4">
+                            <p class="">
+                                Visit
+                                <a href="https://www.spokanetech.org" target="_blank" rel="noopener">
+                                    www.spokanetech.org
+                                </a>
+                                for more local groups and events.
+                            </p>
+                        </div>
+
+                        <h5 class="fw-bold mb-2">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.meetup.com/python-spokane" target="_blank" rel="noopener"
+                                class="social-icon-link text-decoration-none">
+                                <span class="social-icon">
+                                    <i class="fab fa-meetup text-white fs-5"></i>
+                                </span>
+                            </a>
+                            <a href="https://discord.gg/wHrSJNgpnP" target="_blank" rel="noopener"
+                                class="social-icon-link text-decoration-none">
+                                <span class="social-icon">
+                                    <i class="fab fa-discord text-white fs-6"></i>
+                                </span>
+                            </a>
+                            <a href="https://github.com/SpokaneTech" target="_blank" rel="noopener"
+                                class="social-icon-link text-decoration-none">
+                                <span class="social-icon">
+                                    <i class="fab fa-github text-white fs-6"></i>
+                                </span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/spokanetech/" target="_blank" rel="noopener"
+                                class="social-icon-link text-decoration-none">
+                                <span class="social-icon">
+                                    <i class="fab fa-linkedin-in text-white fs-6"></i>
+                                </span>
+                            </a>
+                            <a href="https://www.facebook.com/spokanetech.org/" target="_blank" rel="noopener"
+                                class="social-icon-link text-decoration-none">
+                                <span class="social-icon">
+                                    <i class="fab fa-facebook-f text-white fs-6"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex flex-column align-items-start">
+                        <h5 class="fw-bold mb-2">Community Guidelines</h5>
+                        <ul class="list-unstyled text-start p-2 rounded">
+                            <li class="mb-2">
+                                <i class="fa-solid fa-people-group text-secondary me-2 "></i>
+                                Be respectful and inclusive to all community members
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa-regular fa-handshake text-secondary me-2"></i>
+                                Help newcomers feel welcome and encourage participation
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa-regular fa-share-from-square text-secondary me-2"></i>
+                                Share knowledge freely and acknowledge others' contributions
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa-solid fa-shield-halved text-secondary me-2"></i>
+                                Maintain a professional and harassment-free environment
+                            </li>
+                            <li class="mb-2">
+                                <i class="fa-regular fa-comment text-secondary me-2"></i>
+                                Contribute constructively to discussions
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row text-center mt-4">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="alert alert-primary text-start" role="alert">
+                        <div class="h5 fw-bold mb-2">
+                            <i class="fa-brands fa-python me-2"></i>
+                            Python Software Foundation
+                        </div>
+                        <div>This meetup group is a proud local chapter of the Python Software Foundation, supporting
+                            the mission to promote, protect, and advance the Python programming language.</div>
+                        <div class="mt-3">
+                            <a href="https://www.python.org/psf/" target="_blank" rel="noopener">Learn more about
+                                PSF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-2">
+        <div class="container-fluid px-4">
+            <div class="row align-items-start mt-3">
+                <div class="col-md-4 mb-4 text-start">
+                    <a class="navbar-brand fw-bold text-light" href="#">
+                        <span class="text-warning"><i class="fa-brands fa-python me-2"></i></span>Spokane Python
+                    </a>
+                </div>
+                <div class="col-md-8 text-md-end text-start" style="font-size: .75rem;">
+                    <p class="mb-0">&copy; 2025 Spokane Python User Group. All rights reserved.</p>
+                    <p>Building community through Python</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        // Scroll functionality
+        const scrollContainer = document.getElementById("cardScrollContainer");
+        document.getElementById("scrollLeft").addEventListener("click", () => {
+            scrollContainer.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+        document.getElementById("scrollRight").addEventListener("click", () => {
+            scrollContainer.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+
+        // Equal height sync
+        function setEqualHeights() {
+            const cards = document.querySelectorAll('.scroll-card');
+            let maxHeight = 0;
+
+            // Reset all card heights to auto before calculating
+            cards.forEach(card => {
+                card.style.height = 'auto';
+            });
+
+            // Find tallest
+            cards.forEach(card => {
+                const height = card.offsetHeight;
+                if (height > maxHeight) maxHeight = height;
+            });
+
+            // Set all to tallest height
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+        }
+
+        window.addEventListener('load', setEqualHeights);
+        window.addEventListener('resize', setEqualHeights);
+    </script>
+
+</body>
+
+</html>

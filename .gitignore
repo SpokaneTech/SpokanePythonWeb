@@ -19,6 +19,8 @@ var/
 .installed.cfg
 *.egg
 /venv/
+/venv*/
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -65,7 +67,14 @@ target/
 
 # Project Specific
 local_test
-envs/.env.local
-django_project/django_logs
+src/envs/*
+!src/envs/.env.template
+src/logs
 django_project/yarn.lock
 django_project/__version__.py
+src/docker/.env*
+src/docker/db.yaml
+src/django_project/core/static/node_modules
+src/django_project/core/static/package.json
+src/django_project/core/static/package-lock.json
+*.sass-cache/*
