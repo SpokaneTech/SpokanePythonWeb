@@ -95,6 +95,7 @@ class Event(HandyHelperBaseModel):
     end_date_time: models.DateTimeField = models.DateTimeField(null=False)
     location: models.CharField = models.CharField(max_length=256, null=True, blank=True)
     description: models.TextField = models.TextField(null=True, blank=True)
+    url: models.URLField = models.URLField(max_length=200, null=True, blank=True)
 
     class Meta:
         ordering: list[str] = ["-start_date_time"]

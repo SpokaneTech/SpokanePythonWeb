@@ -1,0 +1,8 @@
+{% for resource in resources %}
+    <div class="mb-3">
+        <a href="{{ resource.url }}" target="_blank" class="note-link-{{ color }} fw-bold">{{ resource.name }}</a><br />
+        <span class="text-muted pe-1" style="font-size: 80%;">{{ resource.description }}</span>
+    </div>
+{% endfor %}
+
+

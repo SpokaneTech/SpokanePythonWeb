@@ -1,4 +1,4 @@
-from web.models import Resource, ResourceCategory
+from web.models import Event, Resource, ResourceCategory
 
 
 def create_resource_categories() -> None:
@@ -250,6 +250,102 @@ def create_resources() -> None:
         )
 
 
+def create_events() -> None:
+    events: list[dict[str, str]] = [
+        {
+            "name": "Coffee and Code",
+            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "start_date_time": "2025-08-04T07:00:00",
+            "end_date_time": "2025-08-04T09:00:00",
+            "location": "Indaba Coffee, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/308977832",
+        },
+        {
+            "name": "Spokane Python User Group Monthly Meetup",
+            "description": "Join us for our monthly meetup to discuss Python, share knowledge, and network with fellow Python enthusiasts.",
+            "start_date_time": "2025-08-15T18:00:00",
+            "end_date_time": "2025-08-15T20:00:00",
+            "location": "Spokane Public Library, Downtown Branch",
+            "url": "https://www.meetup.com/python-spokane/events/309061819",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "start_date_time": "2025-07-03T07:00:00",
+            "end_date_time": "2025-07-03T08:00:00",
+            "location": "Indaba Coffee, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/306382746",
+        },
+        {
+            "name": "Python Workshop: Data Analysis with Pandas",
+            "description": "A hands-on workshop where you will learn how to use Pandas for data analysis in Python.",
+            "start_date_time": "2025-07-22T10:00:00",
+            "end_date_time": "2025-07-22T12:00:00",
+            "location": "Intellitect, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/308298845",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "start_date_time": "2025-06-03T07:00:00",
+            "end_date_time": "2025-06-03T08:00:00",
+            "location": "Indaba Coffee, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/306382744",
+        },
+        {
+            "name": "Python for Beginners",
+            "description": "An introductory workshop for those new to Python programming.",
+            "start_date_time": "2025-06-29T10:00:00",
+            "end_date_time": "2025-06-29T12:00:00",
+            "location": "Limelight, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/308298845",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "start_date_time": "2025-05-03T07:00:00",
+            "end_date_time": "2025-05-03T08:00:00",
+            "location": "Indaba Coffee, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/306382744",
+        },
+        {
+            "name": "Advanced Python Techniques",
+            "description": "A workshop for experienced Python developers to learn advanced techniques and best practices.",
+            "start_date_time": "2025-05-15T10:00:00",
+            "end_date_time": "2025-05-15T12:00:00",
+            "location": "Intellitect, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/308298845",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "start_date_time": "2025-04-03T07:00:00",
+            "end_date_time": "2025-04-03T08:00:00",
+            "location": "Indaba Coffee, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/306382744",
+        },
+        {
+            "name": "Python in Data Science",
+            "description": "A workshop focused on using Python for data science applications.",
+            "start_date_time": "2025-04-20T10:00:00",
+            "end_date_time": "2025-04-20T12:00:00",
+            "location": "Limelight, Spokane",
+            "url": "https://www.meetup.com/python-spokane/events/308298845",
+        },
+    ]
+
+    for event in events:
+        Event.objects.get_or_create(
+            name=event["name"],
+            description=event["description"],
+            start_date_time=event["start_date_time"],
+            end_date_time=event["end_date_time"],
+            location=event["location"],
+            url=event["url"],
+        )
+
+
 def run() -> None:
     create_resource_categories()
     create_resources()
+    create_events()
