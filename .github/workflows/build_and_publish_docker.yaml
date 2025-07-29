@@ -43,8 +43,10 @@ jobs:
         id: vars
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
+          IMAGE_NAME_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
           echo "tag=${TAG_NAME}" >> $GITHUB_OUTPUT
-          # Check if it's a release version (not a pre-release)
+          echo "image_name=${IMAGE_NAME_LOWER}" >> $GITHUB_OUTPUT
+
           if [[ "$TAG_NAME" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "latest=true" >> $GITHUB_OUTPUT
           else
@@ -55,15 +57,13 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: src/docker/Dockerfile
+          file: ./src/docker/Dockerfile
           push: true
-          build-args: |
-            IMAGE_TAG=${{ steps.vars.outputs.tag }}
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.tag }}
-            ${{ steps.vars.outputs.latest == 'true' && format('{0}/{1}:latest', env.REGISTRY, env.IMAGE_NAME) || '' }}
+            ghcr.io/${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.tag }}
+            ${{ steps.vars.outputs.latest == 'true' && format('ghcr.io/{0}:latest', steps.vars.outputs.image_name) || '' }}
           labels: |
-            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
             org.opencontainers.image.version=${{ steps.vars.outputs.tag }}
             org.opencontainers.image.created=${{ github.event.head_commit.timestamp || github.event.release.published_at || github.event.repository.updated_at }}
             org.opencontainers.image.revision=${{ github.sha }}
