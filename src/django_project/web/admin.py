@@ -38,10 +38,10 @@ class PresentationRequestAdmin(admin.ModelAdmin):
         "email",
         "title",
         "description",
-        "target_audience",
+        "skill_level",
     ]
-    search_fields: list[str] = ["id", "presenter", "email", "title", "description", "target_audience"]
-    list_filter: list[str] = ["target_audience"]
+    search_fields: list[str] = ["id", "presenter", "email", "title", "description", "skill_level"]
+    list_filter: list[str] = ["skill_level"]
 
 
 class EventAdmin(admin.ModelAdmin):
