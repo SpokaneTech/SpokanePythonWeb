@@ -6,9 +6,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.views import View
 from django.views.generic import TemplateView
-from handyhelpers.views.htmx import (
-    HtmxFormPostSimple,
-)
+from handyhelpers.views.htmx import HtmxFormPostSimple, HtmxPartialView
 from web.forms import PresentationRequestForm, TopicSuggestionForm
 from web.models import Event, Resource, ResourceCategory
 
@@ -43,7 +41,7 @@ class ResourceListPartialView(View):
         )
 
 
-class PastEventsView(View):
+class PastEventsPartialView(View):
     def get(self, request) -> HttpResponse:
         events: BaseManager[Event] = Event.objects.filter(start_date_time__lt=timezone.now()).order_by(
             "-start_date_time"
@@ -51,7 +49,7 @@ class PastEventsView(View):
         return render(request, "web/partials/past_events.htm", {"events": events})
 
 
-class FutureEventsView(View):
+class FutureEventsPartialView(View):
     def get(self, request) -> HttpResponse:
         events: BaseManager[Event] = Event.objects.filter(start_date_time__gte=timezone.now()).order_by(
             "start_date_time"
@@ -59,11 +57,17 @@ class FutureEventsView(View):
         return render(request, "web/partials/future_events.htm", {"events": events})
 
 
-class PresentationRequestFormRequestView(HtmxFormPostSimple):
+class PresentationRequestPartialView(HtmxPartialView):
+    htmx_template_name: str = "web/partials/presentation_request.htm"
+
+
+class TopicSuggestionPartialView(HtmxPartialView):
+    htmx_template_name: str = "web/partials/topic_suggestion.htm"
+
+
+class PresentationRequestFormPostView(HtmxFormPostSimple):
     form = PresentationRequestForm
-    success_message: str = "Presentation request received, thanks!"
 
 
-class TopicSuggestionFormRequestView(HtmxFormPostSimple):
+class TopicSuggestionFormPostView(HtmxFormPostSimple):
     form = TopicSuggestionForm
-    success_message: str = "Topic suggestion received, thanks!"
