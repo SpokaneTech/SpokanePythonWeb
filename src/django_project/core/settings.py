@@ -38,6 +38,8 @@ SECRET_KEY = env.str("SECRET_KEY", "default_key-this_is_insecure_and_should_be_c
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", True)
+DEPLOYMENT_ENV = env.str("DEPLOYMENT_ENV", "local")
+
 
 ALLOWED_HOSTS = env.str("ALLOWED_HOSTS", "127.0.0.1").split(",")
 INTERNAL_IPS = env.str("INTERNAL_IPS", "127.0.0.1").split(",")
@@ -52,7 +54,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third party apps
-    "debug_toolbar",
     "django_extensions",
     "django_filters",
     "drf_spectacular",
@@ -66,14 +67,22 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
+if DEPLOYMENT_ENV in ["local", "dev"]:
+    INSTALLED_APPS += [
+        "debug_toolbar",  # pragma: no cover
+    ]
+    MIDDLEWARE += [
+        "debug_toolbar.middleware.DebugToolbarMiddleware",  # pragma: no cover
+    ]
+
 
 ROOT_URLCONF = "core.urls"
 

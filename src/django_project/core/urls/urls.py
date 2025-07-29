@@ -41,7 +41,7 @@ urlpatterns = [
     path("", include("web.urls", namespace="web")),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG and settings.DEPLOYMENT_ENV in ["local", "dev"]:
     urlpatterns.append(
         path("__debug__/", include("debug_toolbar.urls")),
     )  # pragma: no cover

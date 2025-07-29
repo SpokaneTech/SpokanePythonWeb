@@ -9,3 +9,7 @@ src/django_project/*.sqlite3
 src/django_project/*.log
 src/django_project/local_test
 src/django_project/tests
+
+src/django_project/core/static/node_modules
+src/django_project/core/static/package.json
+src/django_project/core/static/package-lock.json

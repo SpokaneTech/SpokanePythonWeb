@@ -2,17 +2,16 @@
 dependencies = [
     "django~=5.2",
     "django-braces",
+    "django-debug-toolbar",
     "django-environ",
     "django-extensions",
     "django-filter",
-    "django-handyhelpers",
+    "django-handyhelpers==0.3.41",
     "djangorestframework",
     "djangorestframework-filters==1.0.0.dev0",
     "drf-flex-fields",
     "drf-spectacular",
     "drf-renderer-xlsx",
-    "psycopg2-binary",
-    "whitenoise",
 ]
 description = "Spokane Python Community"
 dynamic = ["version"]
@@ -27,7 +26,6 @@ requires-python = ">=3.10"
 dev = [
     "bandit",
     "coveralls",
-    "django-debug-toolbar",
     "faker",
     "isort",
     "model-bakery",
@@ -42,6 +40,11 @@ dev = [
     "types-python-dateutil",
     "types-requests",
     "typing_extensions",
+]
+docker = [
+    "gunicorn",
+    "psycopg2-binary",
+    "whitenoise",
 ]
 
 
