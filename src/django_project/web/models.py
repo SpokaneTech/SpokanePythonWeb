@@ -67,7 +67,7 @@ class PresentationRequest(HandyHelperBaseModel):
     email: models.EmailField = models.EmailField(max_length=254, null=False)
     title: models.CharField = models.CharField(max_length=128, null=False)
     description: models.TextField = models.TextField()
-    target_audience: models.CharField = models.CharField(
+    skill_level: models.CharField = models.CharField(
         max_length=64,
         null=False,
         choices=[

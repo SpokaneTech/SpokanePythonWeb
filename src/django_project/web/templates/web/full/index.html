@@ -6,10 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="description"
+        content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
     <meta name="keywords" content="spokane, spokanetech, python, coding, software, developers, tech, technology">
     <meta property="og:title" content="Spokane Python User Group">
-    <meta property="og:description" content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta property="og:description"
+        content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'spokanepython/img/favicon.png' %}">
 
@@ -96,6 +98,32 @@
         }
     </style>
 
+    <style>
+        /* Applies red color to all placeholders in form controls */
+        ::placeholder {
+        color: var(--bg-secondary) !important;
+        opacity: .2 !important; 
+        }
+
+        /* Vendor prefixes for better browser support */
+        ::-webkit-input-placeholder {
+        color: var(--bg-secondary) !important;
+        opacity: .2 !important; 
+        }
+        :-moz-placeholder {
+        color: var(--bs-secondary) !important;
+        opacity: .2 !important;
+        }
+        ::-moz-placeholder {
+        color: var(--bg-secondary) !important;
+        opacity: .2 !important;
+        }
+        :-ms-input-placeholder {
+        color: var(--bg-secondary) !important;
+        opacity: .2 !important; 
+        }
+    </style>
+
 </head>
 
 <body>
@@ -130,7 +158,8 @@
                     Group</span></h1>
             <p class="lead text-white py-3">A vibrant community of Python enthusiasts, learners, and professionals. Join
                 us for engaging talks, workshops, and networking opportunities.</p>
-            <a href="https://www.meetup.com/python-spokane/" target="_blank" class="btn btn-primary btn-lg shadow">Join Us</a>
+            <a href="https://www.meetup.com/python-spokane/" target="_blank" class="btn btn-primary btn-lg shadow">Join
+                Us</a>
         </div>
     </section>
 
@@ -201,7 +230,8 @@
 
                 <!-- Scrollable Cards -->
                 <div class="scroll-container" id="cardScrollContainer">
-                    <div class="scroll-row" id="futureEventsList" hx-get="{% url 'web:htmx_future_events' %}" hx-trigger="load" hx-target="#futureEventsList" hx-swap="innerHTML"></div>
+                    <div class="scroll-row" id="futureEventsList" hx-get="{% url 'web:htmx_future_events' %}"
+                        hx-trigger="load" hx-target="#futureEventsList" hx-swap="innerHTML"></div>
                 </div>
             </div>
         </div>
@@ -213,9 +243,12 @@
         <div class="container py-3">
             <h1 class="section-title fw-bold text-center text-primary">Past Events</h1>
             <p class="text-center text-secondary mb-5">Check out what we've been up to</p>
-            <ul class="list-group list-group-flush spaced-bordered-items" style="max-height: 400px; overflow-y: auto; scrollbar-color: rgba(108, 117, 125, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;"">
-                <div id="pastEventsList" hx-get="{% url 'web:htmx_past_events' %}" hx-trigger="load" hx-target="#pastEventsList" hx-swap="innerHTML"></div>
-            </ul>
+            <ul class="list-group list-group-flush spaced-bordered-items"
+                style="max-height: 400px; overflow-y: auto; scrollbar-color: rgba(108, 117, 125, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
+                <div id="pastEventsList" hx-get="{% url 'web:htmx_past_events' %}" hx-trigger="load"
+                hx-target="#pastEventsList" hx-swap="innerHTML">
+        </div>
+        </ul>
         </div>
     </section>
 
@@ -228,10 +261,12 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-primary); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-primary-text-emphasis);"><span class="me-3"><i
-                                        class="fa-solid fa-seedling"></i></span>Beginner Resources</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(55, 118, 171, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
-                                <div id="beginnerResources" hx-get="{% url 'web:htmx_resource_list' 1 %}" hx-trigger="load" hx-target="#beginnerResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-primary-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-seedling"></i></span>Beginner Resources</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(55, 118, 171, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;" >
+                                <div id="beginnerResources" hx-get="{% url 'web:htmx_resource_list' 1 %}"
+                                    hx-trigger="load" hx-target="#beginnerResources" hx-swap="innerHTML"></div>
                             </div>
                         </div>
                     </div>
@@ -239,10 +274,12 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-secondary); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-secondary-text-emphasis);"><span class="me-3"><i
-                                        class="fa-solid fa-code"></i></span>Web Development</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(108, 117, 125, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
-                                <div id="webDevelopmentResources" hx-get="{% url 'web:htmx_resource_list' 2 %}" hx-trigger="load" hx-target="#webDevelopmentResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-secondary-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-code"></i></span>Web Development</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(108, 117, 125, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
+                                <div id="webDevelopmentResources" hx-get="{% url 'web:htmx_resource_list' 2 %}"
+                                    hx-trigger="load" hx-target="#webDevelopmentResources" hx-swap="innerHTML"></div>
                             </div>
                         </div>
                     </div>
@@ -250,10 +287,12 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-info); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-info-text-emphasis);"><span class="me-3"><i
-                                        class="fa-solid fa-chart-column"></i></span>Data Science</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(139, 92, 246, 0.5) rgba(240, 234, 255, 0.5); scrollbar-width: thin;">
-                                <div id="dataScienceResources" hx-get="{% url 'web:htmx_resource_list' 3 %}" hx-trigger="load" hx-target="#dataScienceResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-info-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-chart-column"></i></span>Data Science</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(139, 92, 246, 0.5) rgba(240, 234, 255, 0.5); scrollbar-width: thin;">
+                                <div id="dataScienceResources" hx-get="{% url 'web:htmx_resource_list' 3 %}"
+                                    hx-trigger="load" hx-target="#dataScienceResources" hx-swap="innerHTML"></div>
                             </div>
                         </div>
                     </div>
@@ -261,9 +300,12 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-success); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-success-text-emphasis);"><span class="me-3"><i class="fa-solid fa-robot"></i></span>AI and Machine Learning</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(25, 135, 84, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
-                                <div id="aiMachineLearningResources" hx-get="{% url 'web:htmx_resource_list' 4 %}" hx-trigger="load" hx-target="#aiMachineLearningResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-success-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-robot"></i></span>AI and Machine Learning</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(25, 135, 84, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
+                                <div id="aiMachineLearningResources" hx-get="{% url 'web:htmx_resource_list' 4 %}"
+                                    hx-trigger="load" hx-target="#aiMachineLearningResources" hx-swap="innerHTML"></div>
                             </div>
                         </div>
                     </div>
@@ -271,10 +313,12 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-warning); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-warning-text-emphasis);"><span class="me-3"><i
-                                        class="fa-solid fa-gear"></i></span>DevOps and Automation</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(255, 193, 7, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
-                                <div id="devOpsResources" hx-get="{% url 'web:htmx_resource_list' 5 %}" hx-trigger="load" hx-target="#devOpsResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-warning-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-gear"></i></span>DevOps and Automation</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(255, 193, 7, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
+                                <div id="devOpsResources" hx-get="{% url 'web:htmx_resource_list' 5 %}"
+                                    hx-trigger="load" hx-target="#devOpsResources" hx-swap="innerHTML"></div>
                             </div>
                         </div>
                     </div>
@@ -282,9 +326,13 @@
                 <div class="col-md-4">
                     <div class="card shadow" style="background: var(--gradient-danger); height: 300px;">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-danger-text-emphasis);"><span class="me-3"><i class="fa-solid fa-flask-vial"></i></span>Science Computing</h5>
-                            <div class="card-text" style="max-height: 220px; overflow-y: auto; scrollbar-color: rgba(220, 53, 69, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
-                                <div id="scientificComputingResources" hx-get="{% url 'web:htmx_resource_list' 6 %}" hx-trigger="load" hx-target="#scientificComputingResources" hx-swap="innerHTML"></div>
+                            <h5 class="card-title fw-bold mb-3" style="color: var(--bs-danger-text-emphasis);"><span
+                                    class="me-3"><i class="fa-solid fa-flask-vial"></i></span>Science Computing</h5>
+                            <div class="card-text"
+                                style="max-height: 220px; overflow-x: hidden; overflow-y: auto; scrollbar-color: rgba(220, 53, 69, 0.5) rgba(0,0,0,0.05); scrollbar-width: thin;">
+                                <div id="scientificComputingResources" hx-get="{% url 'web:htmx_resource_list' 6 %}"
+                                    hx-trigger="load" hx-target="#scientificComputingResources" hx-swap="innerHTML">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -308,35 +356,49 @@
                             <h5 class="card-title mb-4">
                                 <i class="fa-solid fa-lightbulb text-secondary me-3"></i>Suggest a Topic
                             </h5>
-                            <form class="d-flex flex-column h-100">
+                            <form action="{% url 'web:htmx_topic_suggestion' %}" method="post"
+                                class="topic-suggestion-form d-flex flex-column h-100"
+                                hx-post="{% url 'web:htmx_topic_suggestion' %}"
+                                hx-target="#topic-suggestion-form-response" hx-swap="outerHTML" hx-on::after-request="if (event.detail.xhr.status === 201) { 
+                        document.querySelector('.topic-suggestion-form').reset();
+                        document.querySelectorAll('.topic-suggestion-form input, .topic-suggestion-form textarea, .topic-suggestion-form select, .topic-suggestion-form button').forEach(el => el.disabled = true);
+                    } else if (event.detail.xhr.status === 400) {
+                        document.querySelector('#topic-suggestion-form-response').innerHTML = event.detail.xhr.responseText;
+                    }">
+                                {% csrf_token %}
                                 <div class="flex-grow-1">
-                                    <div class="mb-3">
-                                        <label for="suggestTopic2" class="form-label fw-bold">Topic Suggestion</label>
-                                        <input type="text" class="form-control" id="suggestTopic2"
+                                    <div class="mb-4">
+                                        <label for="title" class="form-label fw-bold">Topic Suggestion</label>
+                                        <input type="text" name="title" class="form-control" id="topic_suggestion_title"
                                             placeholder="What topic would you like to see?" required>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="suggestDescription" class="form-label fw-bold">Description</label>
-                                        <textarea class="form-control" id="suggestDescription" rows="3"
-                                            placeholder="Share more about your topic suggestion"></textarea>
+                                    <div class="mb-4">
+                                        <label for="description" class="form-label fw-bold">Description</label>
+                                        <textarea name="description" class="form-control"
+                                            id="topic_suggestion_description" rows="3"
+                                            placeholder="Share more about your topic suggestion" data-test="this is the initial form"></textarea>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="suggestSkillLevel" class="form-label fw-bold">Skill Level</label>
-                                        <select class="form-select" id="suggestSkillLevel" required>
-                                            <option value="" disabled selected>Select skill level</option>
+                                    <div class="mb-4">
+                                        <label for="skill_level" class="form-label fw-bold">Skill Level</label>
+                                        <select name="skill_level" class="form-control" id="topic_suggestion_skill_level"
+                                            required>
+                                            <option value="all" selected>All Levels</option>
                                             <option value="beginner">Beginner</option>
                                             <option value="intermediate">Intermediate</option>
                                             <option value="advanced">Advanced</option>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="suggestName" class="form-label fw-bold">Your Name</label>
-                                        <input type="text" class="form-control" id="suggestName"
-                                            placeholder="Enter your name" required>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label fw-bold">Your Email</label>
+                                        <input name="email" type="email" class="form-control"
+                                            id="topic_suggestion_email" placeholder="Enter your email" required>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-warning w-100 mt-3">Submit Suggestion</button>
+                                <button type="submit" class="btn btn-warning fw-bold w-100 mt-3">Submit Suggestion</button>
                             </form>
+                            <span class="fs-6 text-center text-warning mt-3">
+                                <div id="topic-suggestion-form-response"></div>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -347,41 +409,56 @@
                             <h5 class="card-title mb-4">
                                 <i class="fa-solid fa-microphone text-secondary me-3"></i>Volunteer to Present
                             </h5>
-                            <form class="d-flex flex-column h-100">
+                            <form action="{% url 'web:htmx_presentation_request' %}" method="post"
+                                class="presentation-request-form d-flex flex-column h-100"
+                                hx-post="{% url 'web:htmx_presentation_request' %}"
+                                hx-target="#presentation-request-form-response" hx-swap="outerHTML"
+                                hx-on::after-request="if (event.detail.xhr.status === 201) { 
+                        document.querySelector('.presentation-request-form').reset();
+                        document.querySelectorAll('.presentation-request-form input, .presentation-request-form textarea, .presentation-request-form select, .presentation-request-form button').forEach(el => el.disabled = true);
+                    } else if (event.detail.xhr.status === 400) {
+                        document.querySelector('#presentation-request-form-response').innerHTML = event.detail.xhr.responseText;
+                    }">
+                                {% csrf_token %}
                                 <div class="flex-grow-1">
-                                    <div class="mb-3">
-                                        <label for="presenterName" class="form-label fw-bold">Your Name</label>
-                                        <input type="text" class="form-control" id="presenterName"
-                                            placeholder="Enter your full name" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="presenterEmail" class="form-label fw-bold">Your Email</label>
-                                        <input type="email" class="form-control" id="presenterEmail"
-                                            placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="presentationTitle" class="form-label fw-bold">Presentation Title</label>
-                                        <input type="text" class="form-control" id="presentationTitle"
+                                    <div class="mb-4">
+                                        <label for="presentationTitle" class="form-label fw-bold">Presentation
+                                            Title</label>
+                                        <input type="text" class="form-control" id="presentationTitle" name="title"
                                             placeholder="Your presentation title" required>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="presentationDescription" class="form-label fw-bold">Description</label>
-                                        <textarea class="form-control" id="presentationDescription" rows="3"
-                                            placeholder="Brief summary of your presentation"></textarea>
+                                    <div class="mb-4">
+                                        <label for="presentationDescription"
+                                            class="form-label fw-bold">Description</label>
+                                        <textarea class="form-control" id="presentationDescription" name="description"
+                                            rows="3" placeholder="Brief summary of your presentation"></textarea>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="presentationTargetAudience" class="form-label fw-bold">Target
-                                            Audience</label>
-                                        <select class="form-select" id="presentationTargetAudience" required>
-                                            <option value="" disabled selected>Select target audience</option>
-                                            <option value="beginners">Beginners</option>
+                                    <div class="mb-4">
+                                        <label for="presentationSkillLevel" class="form-label fw-bold">Skill Level</label>
+                                        <select class="form-control" id="presentationSkillLevel"
+                                            name="skill_level" required>
+                                            <option value="all" selected>All Levels</option>
+                                            <option value="beginners">Beginner</option>
                                             <option value="intermediate">Intermediate</option>
                                             <option value="advanced">Advanced</option>
                                         </select>
                                     </div>
+                                    <div class="mb-4">
+                                        <label for="presenterName" class="form-label fw-bold">Your Name</label>
+                                        <input type="text" class="form-control" id="presenterName" name="presenter"
+                                            placeholder="Enter your full name" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="presenterEmail" class="form-label fw-bold">Your Email</label>
+                                        <input type="email" class="form-control" id="presenterEmail" name="email"
+                                            placeholder="Enter your email" required>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 mt-3">Submit Proposal</button>
+                                <button type="submit" class="btn btn-primary fw-bold w-100 mt-3">Submit Proposal</button>
                             </form>
+                            <span class="fs-6 text-center text-primary mt-3">
+                                <div id="presentation-request-form-response"></div>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -402,10 +479,7 @@
                         <div class="d-flex flex-column align-items-start mb-4">
                             <p class="">
                                 Visit
-                                <a href="https://www.spokanetech.org" target="_blank" rel="noopener">
-                                    www.spokanetech.org
-                                </a>
-                                for more local groups and events.
+                                <a href="https://www.spokanetech.org" target="_blank" rel="noopener">www.spokanetech.org</a> for more local groups and events.
                             </p>
                         </div>
 
