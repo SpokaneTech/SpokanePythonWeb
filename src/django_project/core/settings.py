@@ -276,6 +276,4 @@ PROJECT_DESCRIPTION = (
     """spokane_python is a super awesome project powered, in part, by amazing code provided by DjangoAddicts."""
 )
 PROJECT_VERSION = env.str("PROJECT_VERSION", "0.0.1")
-PROJECT_SOURCE = "https://github.com/djangoaddicts"
-
-PYGWALKER_THEME = "light"
+PROJECT_SOURCE = "https://github.com/SpokaneTech/SpokanePythonWeb"

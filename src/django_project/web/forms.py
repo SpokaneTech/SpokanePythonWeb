@@ -7,7 +7,11 @@ class PresentationRequestForm(HtmxModelForm):
     hx_post: str = "/presentation_request"
     hx_target: str = "presentation-request-form"
     submit_button_text: str = "submit"
-    success_message: str = "presentation request submitted; thanks!"
+    success_message: str = """Presentation request received; thanks!<br/><div
+    hx-get="htmx/presentation-request/" 
+    hx-trigger="click"
+    hx-target="#presentation-request" 
+    hx-swap="innerHTML" style="cursor: pointer;">reset form</div>"""
 
     class Meta:
         model = PresentationRequest
@@ -26,7 +30,11 @@ class TopicSuggestionForm(HtmxModelForm):
     hx_post: str = "/topic_suggestion"
     hx_target: str = "topic-suggestion-form"
     submit_button_text: str = "submit"
-    success_message: str = "topic suggestion submitted; thanks!"
+    success_message: str = """Topic suggestion received; thanks!<br/><div
+    hx-get="htmx/topic-suggestion/" 
+    hx-trigger="click"
+    hx-target="#topic-suggestion" 
+    hx-swap="innerHTML" style="cursor: pointer;">reset form</div>"""
 
     class Meta:
         model = TopicSuggestion

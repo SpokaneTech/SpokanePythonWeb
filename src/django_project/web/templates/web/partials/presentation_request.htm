@@ -1,0 +1,54 @@
+<div class="card shadow h-100 w-100">
+    <div class="card-body d-flex flex-column">
+        <h4 class="card-title mb-4">
+            <i class="fa-solid fa-microphone text-secondary me-3"></i>Volunteer to Present
+        </h4>
+        <form action="{% url 'web:post_presentation_request' %}" method="post"
+            class="presentation-request-form d-flex flex-column h-100"
+            hx-post="{% url 'web:post_presentation_request' %}" hx-target="#presentation-request-form-response"
+            hx-swap="outerHTML" hx-on::after-request="if (event.detail.xhr.status === 201) {
+                        document.querySelector('.presentation-request-form').reset();
+                        document.querySelectorAll('.presentation-request-form input, .presentation-request-form textarea, .presentation-request-form select, .presentation-request-form button').forEach(el => el.disabled = true);
+                    } else if (event.detail.xhr.status === 400) {
+                        document.querySelector('#presentation-request-form-response').innerHTML = event.detail.xhr.responseText;
+                    }">
+            {% csrf_token %}
+            <div class="flex-grow-1">
+                <div class="mb-4">
+                    <label for="presentationTitle" class="form-label fw-bold">Presentation
+                        Title</label>
+                    <input type="text" class="form-control" id="presentationTitle" name="title"
+                        placeholder="Your presentation title" required>
+                </div>
+                <div class="mb-4">
+                    <label for="presentationDescription" class="form-label fw-bold">Description</label>
+                    <textarea class="form-control" id="presentationDescription" name="description" rows="3"
+                        placeholder="Brief summary of your presentation"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="presentationSkillLevel" class="form-label fw-bold">Skill Level</label>
+                    <select class="form-control" id="presentationSkillLevel" name="skill_level" required>
+                        <option value="all" selected>All Levels</option>
+                        <option value="beginners">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="presenterName" class="form-label fw-bold">Your Name</label>
+                    <input type="text" class="form-control" id="presenterName" name="presenter"
+                        placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="presenterEmail" class="form-label fw-bold">Your Email</label>
+                    <input type="email" class="form-control" id="presenterEmail" name="email"
+                        placeholder="Enter your email" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary fw-bold w-100 mt-3">Submit Proposal</button>
+        </form>
+        <span class="fs-6 text-center text-primary mt-3">
+            <div id="presentation-request-form-response"></div>
+        </span>
+    </div>
+</div>

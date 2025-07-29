@@ -59,7 +59,7 @@ show_missing = true
 
 [tool.coverage.run]
 branch = true
-source = ["django_project"]
+source = ["src/django_project"]
 omit = [
     "django_project/manage.py", 
     "django_project/core/asgi.py",
@@ -83,14 +83,13 @@ exclude = [
 ignore_missing_imports = true
 
 
-
 [tool.pytest.ini_options]
 addopts = "-s -v -x --strict-markers -m 'not extra'"
-testpaths = ["django_project"]
+testpaths = ["src/django_project"]
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::UserWarning",
-]
+    ]
 
 
 [tool.ruff]

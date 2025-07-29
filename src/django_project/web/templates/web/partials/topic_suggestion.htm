@@ -1,0 +1,48 @@
+<div class="card shadow h-100 w-100">
+    <div class="card-body d-flex flex-column">
+        <h4 class="card-title mb-4">
+            <i class="fa-solid fa-lightbulb text-secondary me-3"></i>Suggest a Topic
+        </h4>
+        <form action="{% url 'web:post_topic_suggestion' %}" method="post"
+            class="topic-suggestion-form d-flex flex-column h-100" hx-post="{% url 'web:post_topic_suggestion' %}"
+            hx-target="#topic-suggestion-form-response" hx-swap="outerHTML" hx-on::after-request="if (event.detail.xhr.status === 201) {
+                        document.querySelector('.topic-suggestion-form').reset();
+                        document.querySelectorAll('.topic-suggestion-form input, .topic-suggestion-form textarea, .topic-suggestion-form select, .topic-suggestion-form button').forEach(el => el.disabled = true);
+                    } else if (event.detail.xhr.status === 400) {
+                        document.querySelector('#topic-suggestion-form-response').innerHTML = event.detail.xhr.responseText;
+                    }">
+            {% csrf_token %}
+            <div class="flex-grow-1">
+                <div class="mb-4">
+                    <label for="title" class="form-label fw-bold">Topic Suggestion</label>
+                    <input type="text" name="title" class="form-control" id="topic_suggestion_title"
+                        placeholder="What topic would you like to see?" required>
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="form-label fw-bold">Description</label>
+                    <textarea name="description" class="form-control" id="topic_suggestion_description" rows="3"
+                        placeholder="Share more about your topic suggestion"
+                        data-test="this is the initial form"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="skill_level" class="form-label fw-bold">Skill Level</label>
+                    <select name="skill_level" class="form-control" id="topic_suggestion_skill_level" required>
+                        <option value="all" selected>All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label fw-bold">Your Email</label>
+                    <input name="email" type="email" class="form-control" id="topic_suggestion_email"
+                        placeholder="Enter your email" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning fw-bold w-100 mt-3">Submit Suggestion</button>
+        </form>
+        <span class="fs-6 text-center text-warning mt-3">
+            <div id="topic-suggestion-form-response"></div>
+        </span>
+    </div>
+</div>
