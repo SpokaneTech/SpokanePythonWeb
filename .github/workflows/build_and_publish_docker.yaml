@@ -75,10 +75,3 @@ jobs:
           if [ "${{ steps.vars.outputs.latest }}" = "true" ]; then
             echo "Also tagged as :latest"
           fi
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/') && steps.vars.outputs.latest == 'true'
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.vars.outputs.tag }}
-          name: Release ${{ steps.vars.outputs.tag }}
-          generate_release_notes: true
