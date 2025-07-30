@@ -1,3 +1,5 @@
+name: Bandit Security Analysis
+
 on: [push]
 
 jobs:

@@ -1,0 +1,61 @@
+name: Release and Changelog
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Get tag name
+        id: tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        id: release_notes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = process.env.GITHUB_REF_NAME;
+            const { data: commits } = await github.rest.repos.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 20,
+            });
+
+            const notes = commits.map(c => `- ${c.commit.message.split('\n')[0]}`).join('\n');
+            return notes;
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Release ${{ steps.tag.outputs.tag }}
+          body: ${{ steps.release_notes.outputs.result }}
+
+      - name: Update CHANGELOG.md
+        run: |
+          echo "## ${{ steps.tag.outputs.tag }}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "${{ steps.release_notes.outputs.result }}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG for ${{ steps.tag.outputs.tag }}"
+          git push origin HEAD
