@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Publish Docker Image
 
 on:
   release:
@@ -15,14 +15,14 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME_LOWER: ${{ github.repository_owner }}/${{ github.event.repository.name }}
 
 jobs:
   build-and-push:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
-
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
@@ -32,46 +32,52 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to GitHub Container Registry
+      - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract tag name
-        id: vars
+      - name: Extract tag
+        id: extract_tag
         run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          IMAGE_NAME_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
-          echo "tag=${TAG_NAME}" >> $GITHUB_OUTPUT
-          echo "image_name=${IMAGE_NAME_LOWER}" >> $GITHUB_OUTPUT
+          VERSION_TAG=${GITHUB_REF##*/}
+          echo "version=$VERSION_TAG" >> "$GITHUB_OUTPUT"
+          echo "image=ghcr.io/${{ env.IMAGE_NAME_LOWER }}" >> "$GITHUB_OUTPUT"
 
-          if [[ "$TAG_NAME" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "latest=true" >> $GITHUB_OUTPUT
-          else
-            echo "latest=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Build and push Docker image
+      - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./src/docker/Dockerfile
+          file: src/docker/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.tag }}
-            ${{ steps.vars.outputs.latest == 'true' && format('ghcr.io/{0}:latest', steps.vars.outputs.image_name) || '' }}
+            ${{ steps.extract_tag.outputs.image }}:${{ steps.extract_tag.outputs.version }}
+            ${{ steps.extract_tag.outputs.image }}:latest
           labels: |
             org.opencontainers.image.source=${{ github.repositoryUrl }}
-            org.opencontainers.image.version=${{ steps.vars.outputs.tag }}
-            org.opencontainers.image.created=${{ github.event.head_commit.timestamp || github.event.release.published_at || github.event.repository.updated_at }}
+            org.opencontainers.image.version=${{ steps.extract_tag.outputs.version }}
             org.opencontainers.image.revision=${{ github.sha }}
-            org.opencontainers.image.title=${{ github.repository }}
 
-      - name: Confirm tags pushed
-        run: |
-          echo "Published ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.tag }}"
-          if [ "${{ steps.vars.outputs.latest }}" = "true" ]; then
-            echo "Also tagged as :latest"
-          fi
+      - name: Generate Release Notes
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.extract_tag.outputs.version }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate CHANGELOG.md
+        uses: heinrichreimer/action-github-changelog-generator@v2.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          output: CHANGELOG.md
+          tag: ${{ steps.extract_tag.outputs.version }}
+
+      - name: Commit updated CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update CHANGELOG.md for ${{ steps.extract_tag.outputs.version }}"
+          branch: main
+          file_pattern: CHANGELOG.md
