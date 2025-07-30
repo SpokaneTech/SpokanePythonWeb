@@ -22,6 +22,10 @@ RUN pip install .[docker]
 # === STAGE 2: Runtime with only necessary files ===
 FROM python:3.12-alpine
 
+ARG IMAGE_TAG=dev
+ENV IMAGE_TAG=${IMAGE_TAG}
+
+
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
