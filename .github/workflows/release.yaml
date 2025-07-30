@@ -40,7 +40,13 @@ jobs:
               per_page: 20,
             });
 
-            const notes = commits.map(c => `- ${c.commit.message.split('\n')[0]}`).join('\n');
+            const notes = commits.map(c => {
+              const msg = c.commit.message.split('\n')[0];
+              const sha = c.sha.substring(0, 7);
+              const author = c.commit.author.name;
+              return `- ${msg} (${sha}, by ${author})`;
+            }).join('\n');
+
             return notes;
 
       - name: Create GitHub Release
@@ -54,8 +60,10 @@ jobs:
         run: |
           echo "## ${{ steps.tag.outputs.tag }}" >> CHANGELOG.md
           echo "" >> CHANGELOG.md
-          echo "${{ steps.release_notes.outputs.result }}" >> CHANGELOG.md
+          cat <<EOF >> CHANGELOG.md
+${{ steps.release_notes.outputs.result }}
+EOF
           echo "" >> CHANGELOG.md
           git add CHANGELOG.md
           git commit -m "docs: update CHANGELOG for ${{ steps.tag.outputs.tag }}"
-          git push origin HEAD
+          git push origin HEAD:refs/heads/main
