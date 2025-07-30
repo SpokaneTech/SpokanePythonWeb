@@ -1,0 +1,55 @@
+name: Release and Changelog
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Get latest release tag
+        id: get_tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release notes
+        id: notes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: release } = await github.rest.repos.getReleaseByTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: process.env.GITHUB_REF_NAME,
+            });
+
+            const notes = release.body || 'No release notes provided.';
+            return { notes };
+
+      - name: Append to CHANGELOG.md
+        run: |
+          echo "## ${{ steps.get_tag.outputs.tag }}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "${{ steps.notes.outputs.result.notes }}" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG for ${{ steps.get_tag.outputs.tag }}"
+          git push origin HEAD
+
