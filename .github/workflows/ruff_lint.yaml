@@ -1,3 +1,5 @@
+name: ruff_lint
+
 on: [push]
 
 jobs:
