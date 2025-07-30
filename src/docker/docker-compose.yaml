@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   django:
-    image: spokanepython-django:latest
+    image: ghcr.io/spokanetech/spokanepythonweb:latest
     container_name: django
     build:
       context: ../..

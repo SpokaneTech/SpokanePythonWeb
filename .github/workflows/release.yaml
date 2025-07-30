@@ -1,4 +1,4 @@
-name: Release and Changelog
+name: Create GitHub Release
 
 on:
   release:
@@ -18,11 +18,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Get tag name
         id: tag
@@ -55,16 +50,3 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: Release ${{ steps.tag.outputs.tag }}
           body: ${{ steps.release_notes.outputs.result }}
-
-      - name: Update CHANGELOG.md
-        env:
-          TAG: ${{ steps.tag.outputs.tag }}
-          NOTES: ${{ steps.release_notes.outputs.result }}
-        run: |
-          echo "## $TAG - $(date +'%Y-%m-%d')" >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          echo "$NOTES" >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          git add CHANGELOG.md
-          git commit -m "docs: update CHANGELOG for $TAG"
-          git push origin HEAD:refs/heads/main
