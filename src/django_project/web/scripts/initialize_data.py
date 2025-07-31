@@ -1,3 +1,6 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from web.models import Event, Resource, ResourceCategory
 
 
@@ -254,85 +257,151 @@ def create_events() -> None:
     events: list[dict[str, str]] = [
         {
             "name": "Coffee and Code",
-            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-10-06T07:00:00",
+            "end_date_time": "2025-10-06T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/308944537",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-09-01T07:00:00",
+            "end_date_time": "2025-09-01T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/310155895",
+        },
+        {
+            "name": "Coffee and Code",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
             "start_date_time": "2025-08-04T07:00:00",
-            "end_date_time": "2025-08-04T09:00:00",
-            "location": "Indaba Coffee, Spokane",
+            "end_date_time": "2025-08-04T08:00:00",
+            "location": "Indaba Coffee",
             "url": "https://www.meetup.com/python-spokane/events/308977832",
         },
         {
-            "name": "Spokane Python User Group Monthly Meetup",
-            "description": "Join us for our monthly meetup to discuss Python, share knowledge, and network with fellow Python enthusiasts.",
-            "start_date_time": "2025-08-15T18:00:00",
-            "end_date_time": "2025-08-15T20:00:00",
-            "location": "Spokane Public Library, Downtown Branch",
-            "url": "https://www.meetup.com/python-spokane/events/309061819",
+            "name": "Coffee and Code",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-07-07T07:00:00",
+            "end_date_time": "2025-07-07T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/306382747",
         },
         {
             "name": "Coffee and Code",
-            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
-            "start_date_time": "2025-07-03T07:00:00",
-            "end_date_time": "2025-07-03T08:00:00",
-            "location": "Indaba Coffee, Spokane",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-06-02T07:00:00",
+            "end_date_time": "2025-06-02T08:00:00",
+            "location": "Indaba Coffee",
             "url": "https://www.meetup.com/python-spokane/events/306382746",
         },
         {
-            "name": "Python Workshop: Data Analysis with Pandas",
-            "description": "A hands-on workshop where you will learn how to use Pandas for data analysis in Python.",
-            "start_date_time": "2025-07-22T10:00:00",
-            "end_date_time": "2025-07-22T12:00:00",
-            "location": "Intellitect, Spokane",
-            "url": "https://www.meetup.com/python-spokane/events/308298845",
-        },
-        {
             "name": "Coffee and Code",
-            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
-            "start_date_time": "2025-06-03T07:00:00",
-            "end_date_time": "2025-06-03T08:00:00",
-            "location": "Indaba Coffee, Spokane",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-05-05T07:00:00",
+            "end_date_time": "2025-05-05T08:00:00",
+            "location": "Indaba Coffee",
             "url": "https://www.meetup.com/python-spokane/events/306382744",
         },
         {
-            "name": "Python for Beginners",
-            "description": "An introductory workshop for those new to Python programming.",
-            "start_date_time": "2025-06-29T10:00:00",
-            "end_date_time": "2025-06-29T12:00:00",
-            "location": "Limelight, Spokane",
-            "url": "https://www.meetup.com/python-spokane/events/308298845",
+            "name": "Coffee and Code",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-04-07T07:00:00",
+            "end_date_time": "2025-04-07T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/306368361",
         },
         {
             "name": "Coffee and Code",
-            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
-            "start_date_time": "2025-05-03T07:00:00",
-            "end_date_time": "2025-05-03T08:00:00",
-            "location": "Indaba Coffee, Spokane",
-            "url": "https://www.meetup.com/python-spokane/events/306382744",
-        },
-        {
-            "name": "Advanced Python Techniques",
-            "description": "A workshop for experienced Python developers to learn advanced techniques and best practices.",
-            "start_date_time": "2025-05-15T10:00:00",
-            "end_date_time": "2025-05-15T12:00:00",
-            "location": "Intellitect, Spokane",
-            "url": "https://www.meetup.com/python-spokane/events/308298845",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-03-03T07:00:00",
+            "end_date_time": "2025-03-03T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/305925589",
         },
         {
             "name": "Coffee and Code",
-            "description": "Join us to talk code, work on coding projects, share knowledge, or just hang out.",
-            "start_date_time": "2025-04-03T07:00:00",
-            "end_date_time": "2025-04-03T08:00:00",
-            "location": "Indaba Coffee, Spokane",
-            "url": "https://www.meetup.com/python-spokane/events/306382744",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-02-03T07:00:00",
+            "end_date_time": "2025-02-03T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/305609285",
         },
         {
-            "name": "Python in Data Science",
-            "description": "A workshop focused on using Python for data science applications.",
-            "start_date_time": "2025-04-20T10:00:00",
-            "end_date_time": "2025-04-20T12:00:00",
-            "location": "Limelight, Spokane",
+            "name": "Coffee and Code",
+            "description": "Grab some coffee and write code, together. Every first Monday of the month, local tech enthusiasts meet at a coffee shop to collaborate on code, or just talk tech.",
+            "start_date_time": "2025-01-06T07:00:00",
+            "end_date_time": "2025-01-06T08:00:00",
+            "location": "Indaba Coffee",
+            "url": "https://www.meetup.com/python-spokane/events/305044389",
+        },
+        {
+            "name": "Getting started with Pulumi",
+            "description": "Ready to streamline your infrastructure management? Join us for our next meetup where we'll dive deep into Infrastructure as Code (IaC) using Pulumi with Python examples!",
+            "start_date_time": "2025-07-23T17:30:00",
+            "end_date_time": "2025-07-23T19:00:00",
+            "location": "IntelliTect",
+            "url": "https://www.meetup.com/python-spokane/events/309061819",
+        },
+        {
+            "name": "GitHub Copilot Global Bootcamp",
+            "description": "Spokane Python User Group Update: Join Spokane DevOps Meetup This Month!",
+            "start_date_time": "2025-06-19T13:00:00",
+            "end_date_time": "2025-06-19T16:00:00",
+            "location": "IntelliTect",
             "url": "https://www.meetup.com/python-spokane/events/308298845",
+        },
+        {
+            "name": "From Data to Dream Home: A Data Scientist's Workflow in Python",
+            "description": """What does a data scientist actually do from start to finish? In this demo, we walk through a full data science workflow using a real estate use case: finding the optimal house to buy.
+We'll cover data collection, exploratory analysis, feature engineering, model building, and interpretation — all with hands-on Python code. Along the way, you’ll see how tools like Pandas, scikit-learn, and visualization libraries come together to solve a real-world problem.
+Whether you're a data practitioner or just curious about applied data science, this talk will bring the process to life through a practical and engaging example around real estate.""",
+            "start_date_time": "2025-05-20T17:30:00",
+            "end_date_time": "2025-05-20T19:30:00",
+            "location": "Burbity Workspaces - Sullivan Valley Commons",
+            "url": "https://www.meetup.com/python-spokane/events/307606946",
+        },
+        {
+            "name": "Community Show & Tell",
+            "description": "Join us for an interactive Show & Tell event in collaboration with Launchpad INW! This is a relaxed and informal gathering where members of our local tech community are invited to present interesting projects, innovative ideas, or anything they're currently passionate about. Whether you're a seasoned developer, a budding entrepreneur, or just curious about the tech landscape, this event is for you! Come to present, network with fellow tech enthusiasts, or just discover the amazing things being built right here in Spokane.",
+            "start_date_time": "2025-04-23T17:30:00",
+            "end_date_time": "2025-04-23T19:30:00",
+            "location": "Fuel Coworking",
+            "url": "https://www.meetup.com/python-spokane/events/307187069",
+        },
+        {
+            "name": "Join Us for a Special Python & Rust Meetup!",
+            "description": "Are you interested in starting your next project in Python or Rust but unsure where to begin? Whether you're new to coding or looking to explore a new language, this event is for you!",
+            "start_date_time": "2025-03-18T17:30:00",
+            "end_date_time": "2025-03-18T19:30:00",
+            "location": "Limelyte Technology Group, Inc.",
+            "url": "https://www.meetup.com/python-spokane/events/306366620",
+        },
+        {
+            "name": "Spokane Python User Group Monthly Meetup",
+            "description": "This months meetup will be on a Wednesday 01/22. We are diverting from our regularly schedule date to join with the Spokane Go Users Group for an informal show and tell.",
+            "start_date_time": "2025-01-22T17:30:00",
+            "end_date_time": "2025-01-22T19:30:00",
+            "location": "Limelyte Technology Group, Inc.",
+            "url": "https://www.meetup.com/python-spokane/events/304921795",
+        },
+        {
+            "name": "2024 Holiday Hangout",
+            "description": "Hello Pythonistas! Join us for a jolly good time as our tech community comes together to celebrate the holiday season in style! Whether you're a coder, designer, tinkerer, or tech enthusiast, we’re all about festive cheer and good vibes.No presentation or topic this month, just a cool hang with your friends in the local tech community.",
+            "start_date_time": "2024-12-17T18:00:00",
+            "end_date_time": "2024-12-17T20:00:00",
+            "location": "No-Li Brewhouse",
+            "url": "https://www.meetup.com/python-spokane/events/304949560",
         },
     ]
+
+    # Use ZoneInfo for timezone handling instead of pytz
+    for event in events:
+        # Parse and localize to PDT, then convert to UTC and format as ISO string
+        start_dt = datetime.fromisoformat(event["start_date_time"]).replace(tzinfo=ZoneInfo("America/Los_Angeles"))
+        end_dt = datetime.fromisoformat(event["end_date_time"]).replace(tzinfo=ZoneInfo("America/Los_Angeles"))
+        event["start_date_time"] = start_dt.astimezone(ZoneInfo("UTC")).isoformat()
+        event["end_date_time"] = end_dt.astimezone(ZoneInfo("UTC")).isoformat()
 
     for event in events:
         Event.objects.get_or_create(

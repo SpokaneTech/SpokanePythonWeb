@@ -59,6 +59,8 @@ jobs:
           context: .
           file: ./src/docker/Dockerfile
           push: true
+          build-args: |
+            IMAGE_TAG=${{ steps.vars.outputs.tag }}
           tags: |
             ghcr.io/${{ steps.vars.outputs.image_name }}:${{ steps.vars.outputs.tag }}
             ${{ steps.vars.outputs.latest == 'true' && format('ghcr.io/{0}:latest', steps.vars.outputs.image_name) || '' }}
