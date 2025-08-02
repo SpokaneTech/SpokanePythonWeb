@@ -85,6 +85,17 @@ if DEPLOYMENT_ENV in ["local", "dev"]:
     ]
 
 
+SECURE_HSTS_SECONDS = 0
+SECURE_SSL_REDIRECT: bool = env.bool("SECURE_SSL_REDIRECT", False)
+SESSION_COOKIE_SECURE: bool = env.bool("SESSION_COOKIE_SECURE", True)
+CSRF_COOKIE_SECURE: bool = env.bool("CSRF_COOKIE_SECURE", True)
+CSRF_TRUSTED_ORIGINS: list[str] = [f"https://{host}" for host in ALLOWED_HOSTS]
+
+# Required for HTTP behind Traefik
+SECURE_PROXY_SSL_HEADER: tuple = ("HTTP_X_FORWARDED_PROTO", "http")
+USE_X_FORWARDED_HOST: bool = env.bool("USE_X_FORWARDED_HOST", True)
+
+
 ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [

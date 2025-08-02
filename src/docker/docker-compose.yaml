@@ -1,17 +1,29 @@
-version: '3.9'
+networks:
+  web:
+    external: true
 
 services:
   django:
-    image: ghcr.io/spokanetech/spokanepythonweb:latest
     container_name: django
+    image: ghcr.io/spokanetech/spokanepythonweb:latest
     build:
       context: ../..
       dockerfile: src/docker/Dockerfile
     env_file:
       - ../envs/.env.docker-compose
-    command: ./entrypoint.sh
-    ports:
-      - "8000:8000"
+    command: "./entrypoint.sh"
+    labels:
+      - "traefik.enable=true"
+
+      # Router for HTTPS
+      - "traefik.http.routers.django.rule=Host(`davidslusser.website`) || Host(`www.davidslusser.website`)"
+      - "traefik.http.routers.django.entrypoints=websecure"
+      - "traefik.http.routers.django.tls.certresolver=myresolver"
+
+      # Service settings
+      - "traefik.http.services.django.loadbalancer.server.port=8000"
+    networks:
+      - web
     depends_on:
       - db
     restart: unless-stopped
@@ -25,6 +37,8 @@ services:
       - "5432:5432"
     env_file:
       - ../envs/.env.docker-compose
+    networks:
+      - web
     restart: unless-stopped
 
 volumes:
