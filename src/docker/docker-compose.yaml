@@ -12,8 +12,6 @@ services:
     env_file:
       - ../envs/.env.docker-compose
     command: "./entrypoint.sh"
-    ports:
-      - "8000:8000"    
     labels:
       - "traefik.enable=true"
 
