@@ -10,7 +10,6 @@ from django.utils import timezone
 from django.views import View
 from django.views.generic import TemplateView
 from handyhelpers.views.htmx import HtmxFormPostSimple, HtmxPartialView
-
 from web.forms import PresentationRequestForm, TopicSuggestionForm
 from web.models import Event, Resource, ResourceCategory
 
