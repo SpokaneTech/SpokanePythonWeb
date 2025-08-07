@@ -1,5 +1,8 @@
+import sys
 from typing import Any
 
+import django
+from django.conf import settings
 from django.db.models.manager import BaseManager
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -13,6 +16,19 @@ from web.models import Event, Resource, ResourceCategory
 
 class IndexView(TemplateView):
     template_name = "web/full/index.html"
+
+
+class HostView(View):
+    def get(self, request) -> HttpResponse:
+        host_info: dict[str, str] = {
+            "hostname": request.get_host(),
+            "remote_ip_address": request.META.get("REMOTE_ADDR", "Unknown"),
+            "user_agent": request.META.get("HTTP_USER_AGENT", "Unknown"),
+            "source_code": getattr(settings, "PROJECT_SOURCE", "Unknown"),
+            "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
+            "django_version": django.get_version(),
+        }
+        return render(request, "web/full/host_info.html", host_info)
 
 
 class ResourceListPartialView(View):
