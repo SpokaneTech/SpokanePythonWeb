@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6VK8H1VLF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X6VK8H1VLF');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="keywords" content="spokane, spokanetech, python, coding, software, developers, tech, technology">
+    <meta property="og:title" content="Spokane Python User Group">
+    <meta property="og:description"
+        content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'spokanepython/img/favicon.png' %}">
+
+    <title>Spokane Python User Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'spokanepython/css/spug.css' %}">
+
+</head>
+
+<body>
+    <section id="hero" class="p-5 d-flex justify-content-center" style="min-height: 100vh; background: linear-gradient(135deg, #3776AB 0%, #103069 100%);">
+        <div class="container text-center p-2">
+            <h1 class="display-3 text-white fw-bold"><span class="text-warning"><i class="fa-brands fa-python me-2"></i></span></h1>
+            <h1 class="display-3 text-warning fw-bold"><span class="">Spokane Python User Group</span></h1>
+            <!-- <h3 class="fw-bold text-warning py-3">Host Information</h3> -->
+            <p class="my-4 lead fw-bold text-white">This page provides information about the host system running this application.</p>
+            <div class="my-5">
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Start Time:</span>
+                    <span class="text-light">{{ HH_STARTTIME }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Version</span>
+                    <span class="text-light">{{ PROJECT_VERSION }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Python Version:</span>
+                    <span class="text-light">{{ python_version }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Django Version:</span>
+                    <span class="text-light">{{ django_version }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Hostname:</span>
+                    <span class="text-light">{{ hostname }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Source Code:</span>
+                    <span class="text-light"><a href="{{ source_code }}" target="_blank" class="text-light">{{ source_code }}</a></span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Client IP Address:</span>
+                    <span class="text-light">{{ remote_ip_address }}</span>
+                </div>
+                <div class="row mb-4">
+                    <span class="text-warning fw-bold">Client User Agent:</span>
+                    <span class="text-light">{{ user_agent }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
