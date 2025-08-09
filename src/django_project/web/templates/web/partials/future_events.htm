@@ -4,7 +4,7 @@
         <div class="text-secondary text-start mb-3">{{ event.start_date_time }}</div>
         <h4 class="card-title fw-bold mb-3">{{ event.name }}</h4>
         <p class="card-text mb-4">
-            {{ event.description }}
+            {{ event.description|truncatechars:250 }}
         </p>
         <div class="mt-auto">
             <p class="text-secondary"><i class="fa-regular fa-clock me-2"></i>
