@@ -7,6 +7,7 @@ urlpatterns = [
     path("index/", gui.IndexView.as_view(), name="index"),
     path("default/", gui.IndexView.as_view(), name="default"),
     path("home/", gui.IndexView.as_view(), name="home"),
+    path("about/", gui.IndexView.as_view(), name="about"),
     path("host/", gui.HostView.as_view(), name="host_info"),
     # HTMX views
     path("htmx/resource-list/<int:pk>/", gui.ResourceListPartialView.as_view(), name="htmx_resource_list"),
