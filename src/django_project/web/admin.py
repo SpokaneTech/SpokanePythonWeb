@@ -12,19 +12,19 @@ from web.models import (
 
 
 class ResourceCategoryAdmin(admin.ModelAdmin):
-    list_display: list[str] = ["id", "created_at", "updated_at", "name"]
+    list_display: list[str] = ["id", "name", "created_at", "updated_at"]
     search_fields: list[str] = ["id", "name"]
     list_filter: list[str | type[ListFilter] | tuple[str, type[ListFilter]]] = []
 
 
 class ResourceAdmin(admin.ModelAdmin):
-    list_display: list[str] = ["id", "created_at", "updated_at", "name", "description", "url", "category"]
+    list_display: list[str] = ["id", "name", "description", "url", "category", "created_at", "updated_at"]
     search_fields: list[str] = ["id", "name", "description", "url"]
     list_filter: list[str] = ["category"]
 
 
 class TopicSuggestionAdmin(admin.ModelAdmin):
-    list_display: list[str] = ["id", "created_at", "updated_at", "title", "description", "skill_level", "email"]
+    list_display: list[str] = ["id", "title", "description", "skill_level", "email", "created_at", "updated_at"]
     search_fields: list[str] = ["id", "title", "description", "skill_level", "email"]
     list_filter: list[str] = ["skill_level"]
 
@@ -32,13 +32,13 @@ class TopicSuggestionAdmin(admin.ModelAdmin):
 class PresentationRequestAdmin(admin.ModelAdmin):
     list_display: list[str] = [
         "id",
-        "created_at",
-        "updated_at",
         "presenter",
         "email",
         "title",
         "description",
         "skill_level",
+        "created_at",
+        "updated_at",
     ]
     search_fields: list[str] = ["id", "presenter", "email", "title", "description", "skill_level"]
     list_filter: list[str] = ["skill_level"]
@@ -47,13 +47,13 @@ class PresentationRequestAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display: list[str] = [
         "id",
-        "created_at",
-        "updated_at",
         "name",
         "start_date_time",
         "end_date_time",
         "location",
         "description",
+        "created_at",
+        "updated_at",
     ]
     search_fields: list[str] = ["id", "name", "location", "description"]
     list_filter: list[str | type[ListFilter] | tuple[str, type[ListFilter]]] = []
