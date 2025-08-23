@@ -275,7 +275,7 @@ REST_FRAMEWORK = {
     else ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.TokenAuthentication",
-        # "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     )
     if DEBUG
     else ("rest_framework.authentication.TokenAuthentication",),
