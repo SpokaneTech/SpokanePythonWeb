@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third party apps
-    "djangoaddicts.codegen",
     "django_extensions",
     "django_filters",
     "drf_spectacular",
