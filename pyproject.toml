@@ -12,6 +12,7 @@ dependencies = [
     "drf-flex-fields",
     "drf-spectacular",
     "drf-renderer-xlsx",
+    "whitenoise",
 ]
 description = "Spokane Python Community"
 dynamic = ["version"]
@@ -44,7 +45,6 @@ dev = [
 docker = [
     "gunicorn",
     "psycopg2-binary",
-    "whitenoise",
 ]
 
 
