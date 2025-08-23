@@ -64,11 +64,11 @@ show_missing = true
 branch = true
 source = ["src/django_project"]
 omit = [
-    "django_project/manage.py", 
-    "django_project/core/asgi.py",
-    "django_project/core/wsgi.py", 
-    "django_project/*/scripts/*",
-    "django_project/tests/*", 
+    "src/django_project/manage.py", 
+    "src/django_project/core/asgi.py",
+    "src/django_project/core/wsgi.py", 
+    "src/django_project/*/scripts/*",
+    "src/django_project/tests/*", 
     ]
 
 
@@ -97,7 +97,13 @@ filterwarnings = [
 
 [tool.ruff]
 line-length = 120
-exclude = ["django_project/manage.py", "django_project/tests", "django_project/*/migrations", "django_project/*/scripts", "django_project/*/local_test"]
+exclude = [
+    "src/django_project/manage.py", 
+    "src/django_project/tests", 
+    "src/django_project/*/migrations", 
+    "src/django_project/*/scripts", 
+    "src/django_project/*/local_test"
+    ]
 
 
 [tool.setuptools.packages.find]

@@ -20,10 +20,11 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-ENV_PATH = os.environ.get("ENV_PATH", f"{BASE_DIR.parent}/envs/.env.local")
+# ENV_PATH = os.environ.get("ENV_PATH", f"{BASE_DIR.parent}/envs/.env.local")
+ENV_PATH = os.environ.get("ENV_PATH")
 # now load the contents of the defined .env file
 env = environ.Env()
-if os.path.exists(ENV_PATH):
+if ENV_PATH and os.path.exists(ENV_PATH):
     print(f"loading ENV vars from {ENV_PATH}")
     environ.Env.read_env(ENV_PATH)
 else:
@@ -37,7 +38,7 @@ else:
 SECRET_KEY = env.str("SECRET_KEY", "default_key-this_is_insecure_and_should_be_changed")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", True)
+DEBUG = env.bool("DEBUG", False)
 DEPLOYMENT_ENV = env.str("DEPLOYMENT_ENV", "local")
 
 
@@ -274,7 +275,7 @@ REST_FRAMEWORK = {
     else ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.TokenAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
     )
     if DEBUG
     else ("rest_framework.authentication.TokenAuthentication",),

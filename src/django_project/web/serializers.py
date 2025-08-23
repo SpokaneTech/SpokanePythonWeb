@@ -1,5 +1,5 @@
+from handyhelpers.serializers import FkReadWriteField
 from rest_flex_fields import FlexFieldsModelSerializer
-from rest_framework import serializers
 
 # import models
 from web.models import (
@@ -53,7 +53,7 @@ class PresentationRequestSerializer(FlexFieldsModelSerializer):
 class ResourceSerializer(FlexFieldsModelSerializer):
     """serializer class for Resource"""
 
-    category = serializers.StringRelatedField()
+    category = FkReadWriteField(queryset=ResourceCategory.objects.all())
 
     class Meta:
         """Metaclass to define filterset model and fields"""
