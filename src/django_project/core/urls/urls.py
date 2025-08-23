@@ -31,7 +31,7 @@ urlpatterns = [
     # 3rd party URLs
     path("handyhelpers/", include("handyhelpers.urls")),
     # RESTful API URLs
-    path("rest/", include("core.urls.rest", namespace="rest")),
+    path("rest/", include("core.urls.rest", namespace="")),
     path("rest/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("rest/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
     path("rest/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
