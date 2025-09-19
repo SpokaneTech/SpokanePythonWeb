@@ -59,7 +59,7 @@ class ResourceViewSet(viewsets.ModelViewSet):
     filterset_class = ResourceFilterSet
 
     def get_queryset(self):
-        queryset = self.model.objects.all().select_related(
+        queryset = self.model.objects.filter(enabled=True).select_related(
             "category",
         )
 

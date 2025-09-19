@@ -22,6 +22,7 @@ class Resource(HandyHelperBaseModel):
     description: models.TextField = models.TextField(null=True, blank=True)
     url: models.URLField = models.URLField(max_length=200, null=False)
     category: ResourceCategory = models.ForeignKey(ResourceCategory, on_delete=models.CASCADE, related_name="resources")
+    enabled: models.BooleanField = models.BooleanField(default=True)
 
     class Meta:
         ordering: list[str] = ["created_at"]
