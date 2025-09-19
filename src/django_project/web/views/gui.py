@@ -35,7 +35,9 @@ class ResourceListPartialView(View):
     def get(self, request, pk) -> HttpResponse:
         category: Any = ResourceCategory.objects.get_object_or_none(pk=pk)
         if category:
-            resources: BaseManager[Resource] = Resource.objects.filter(category=category)
+            resources: BaseManager[Resource] = Resource.objects.filter(category=category, enabled=True).order_by(
+                "created_at"
+            )
         else:
             resources = Resource.objects.none()
         color_map: dict[int, str] = {
