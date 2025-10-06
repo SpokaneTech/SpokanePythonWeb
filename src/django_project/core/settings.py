@@ -301,3 +301,5 @@ PROJECT_DESCRIPTION = (
 )
 PROJECT_VERSION = env.str("IMAGE_TAG", "0.0.0")
 PROJECT_SOURCE = "https://github.com/SpokaneTech/SpokanePythonWeb"
+
+GOOGLE_ANALYTICS_TAG_ID: str | None = env.str("GOOGLE_ANALYTICS_TAG_ID", None)
