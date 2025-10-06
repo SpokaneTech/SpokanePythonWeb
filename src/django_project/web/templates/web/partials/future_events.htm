@@ -1,8 +1,7 @@
 {% for event in events %}
 <div class="card scroll-card shadow">
     <div class="card-body d-flex flex-column">
-        <div class="text-secondary text-start mb-3">{{ event.start_date_time }}</div>
-        <h4 class="card-title fw-bold mb-3">{{ event.name }}</h4>
+        <h4 class="card-title fw-bold text-primary mb-3">{{ event.name }}</h4>
         <p class="card-text mb-4">
             {{ event.description|truncatechars:250 }}
         </p>
@@ -10,7 +9,7 @@
             <p class="text-secondary"><i class="fa-regular fa-clock me-2"></i>
                 {{ event.start_date_time|date:"F j, Y, g:i a" }} - {{ event.end_date_time|date:"g:i a" }}</p>
             </p>
-            <p class="text-secondary"><i class="fa-solid fa-location-dot me-2"></i>{{ event.location }}</p>
+            <p class="text-secondary"><i class="fa-solid fa-location-dot me-3"></i>{{ event.location }}</p>
             <a href="{{ event.url }}" target="_blank" class="mt-2 btn btn-primary w-100">RSVP Now</a>
         </div>
     </div>
