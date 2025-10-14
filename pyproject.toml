@@ -6,7 +6,7 @@ dependencies = [
     "django-environ",
     "django-extensions",
     "django-filter",
-    "django-handyhelpers==0.3.41",
+    "django-handyhelpers~=0.3",
     "djangorestframework",
     "djangorestframework-filters==1.0.0.dev0",
     "drf-flex-fields",
