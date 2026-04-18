@@ -1,6 +1,9 @@
-name: Bandit Security Analysis
+name: Security Analysis (bandit)
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   bandit:
@@ -11,5 +14,4 @@ jobs:
         with:
           src: "src"
           options: "-c pyproject.toml -r"
-          pip_install_command: "pip install .[dev]"
-          python_version: "3.11"
+          python_version: "3.13"
