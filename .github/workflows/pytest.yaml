@@ -1,15 +1,39 @@
-name: pytest
+name: Unittest Execution (pytest)
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   pytest:
     runs-on: ubuntu-latest
     name: "pytest"
+
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            r-base \
+            r-base-dev \
+            libtirpc-dev
+
       - uses: davidslusser/actions_python_pytest@v1.0.1
         with:
           src: ""
-          options: ""
-          pip_install_command: "pip install -e .[dev]"
-          python_version: "3.11"
+          options: "--cov --cov-report=term-missing --cov-report=xml"
+          pip_install_command: "uv pip install -e .[dev] --system"
+
+      - name: Upload coverage to CodeAnt AI
+        if: github.ref == 'refs/heads/main'
+        uses: CodeAnt-AI/codeant-coverage-action@v0.0.5
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN_GITHUB }}
+          coverage_file: coverage.xml
