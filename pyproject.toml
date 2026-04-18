@@ -1,6 +1,6 @@
 [project]
 dependencies = [
-    "django~=5.2",
+    "django~=5.2.12",
     "django-braces",
     "django-debug-toolbar",
     "django-environ",
@@ -10,8 +10,8 @@ dependencies = [
     "djangorestframework",
     "djangorestframework-filters==1.0.0.dev0",
     "drf-flex-fields",
-    "drf-spectacular",
     "drf-renderer-xlsx",
+    "drf-spectacular",
     "whitenoise",
 ]
 description = "Spokane Python Community"
@@ -20,14 +20,14 @@ keywords = ["django"]
 license = {file = "LICENSE"}
 name = "my_django_project"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 
 
 [project.optional-dependencies]
 dev = [
     "bandit",
-    "coveralls",
     "faker",
+    "fawltydeps",    
     "isort",
     "model-bakery",
     "mypy",
@@ -37,7 +37,6 @@ dev = [
     "pytest-cov",
     "pytest-django",
     "radon",
-    "safety",
     "types-python-dateutil",
     "types-requests",
     "typing_extensions",
@@ -70,6 +69,40 @@ omit = [
     "src/django_project/*/scripts/*",
     "src/django_project/tests/*", 
     ]
+
+
+[tool.fawltydeps]
+code = ["src/django_project"]
+deps = ["pyproject.toml"]
+ignore_unused = [
+    "bandit",
+    "black",
+    "django-braces",
+    "django-celery-beat",
+    "django-debug-toolbar",
+    "django-extensions",
+    "django-filter",
+    "drf-renderer-xlsx",
+    "gunicorn",
+    "faker",
+    "fawltydeps",
+    "isort",
+    "model-bakery",
+    "mypy",
+    "mypy-extensions",
+    "ruff",
+    "psycopg2-binary",
+    "pytest",
+    "pytest-cov",
+    "pytest-django",
+    "radon",
+    "redis",
+    "types-python-dateutil",
+    "types-requests",
+    "typing_extensions",
+    "whitenoise"
+    ]
+output_format = "human_detailed"
 
 
 [tool.isort]

@@ -1,0 +1,21 @@
+name: Dependency Consistency Check (fawltydeps)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  fawltydeps:
+    runs-on: ubuntu-latest
+    name: "fawltydeps"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          pip install -e .[dev]
+      - name: Run fawltydeps
+        run: |
+          fawltydeps
