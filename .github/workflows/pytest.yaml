@@ -17,14 +17,6 @@ jobs:
       - name: Install uv
         run: pip install uv
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            r-base \
-            r-base-dev \
-            libtirpc-dev
-
       - uses: davidslusser/actions_python_pytest@v1.0.1
         with:
           src: ""
