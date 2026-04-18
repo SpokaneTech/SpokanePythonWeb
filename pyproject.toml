@@ -10,6 +10,7 @@ dependencies = [
     "djangorestframework",
     "djangorestframework-filters==1.0.0.dev0",
     "drf-flex-fields",
+    "drf-renderer-xlsx",
     "drf-spectacular",
     "whitenoise",
 ]
@@ -81,6 +82,7 @@ ignore_unused = [
     "django-debug-toolbar",
     "django-extensions",
     "django-filter",
+    "drf-renderer-xlsx",
     "gunicorn",
     "faker",
     "fawltydeps",
