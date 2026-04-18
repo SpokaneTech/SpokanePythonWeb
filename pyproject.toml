@@ -19,7 +19,7 @@ keywords = ["django"]
 license = {file = "LICENSE"}
 name = "my_django_project"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 
 
 [project.optional-dependencies]
