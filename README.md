@@ -11,11 +11,14 @@ https://www.spokanepython.com
 | Workflow | Description             | Status                                                                       |
 |----------|-------------------------|------------------------------------------------------------------------------|
 |Bandit|security checks|![Bandit](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/bandit.yaml/badge.svg)|
+|Django Check|django project scan|![Lint](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/django.yaml/badge.svg)|
+|FawltyDeps|dependency consistency check|![Lint](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/fawltydeps.yaml/badge.svg)|
 |Isort|python import ordering|![Isort](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/isort.yaml/badge.svg)|
 |Mypy|static type checking|![Mypy](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/mypy.yaml/badge.svg)|
 |Radon|code complexity analysis|![Radon](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/radon.yaml/badge.svg)|
 |Ruff Format|code formatting|![Format](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/ruff_format.yaml/badge.svg)|
 |Ruff Lint|static code analysis|![Lint](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/ruff_lint.yaml/badge.svg)|
+
 
 
 <br/>
@@ -24,7 +27,7 @@ https://www.spokanepython.com
 
 ### prerequisites
 1. git installed on system
-2. python installed on system (3.10+ recommended)
+2. python installed on system (3.12+ recommended)
 
 
 ### local git setup
