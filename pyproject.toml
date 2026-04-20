@@ -33,6 +33,7 @@ dev = [
     "mypy",
     "mypy-extensions",
     "ruff",
+    "pip-audit",
     "pytest",
     "pytest-cov",
     "pytest-django",
@@ -49,10 +50,6 @@ docker = [
 
 [tool.bandit]
 exclude_dirs = ["venv", "django_project/tests", "django_project/*/management/commands"]
-
-
-[tool.black]
-line-length = 120
 
 
 [tool.coverage.report]
@@ -91,6 +88,7 @@ ignore_unused = [
     "mypy",
     "mypy-extensions",
     "ruff",
+    "pip-audit",
     "psycopg2-binary",
     "pytest",
     "pytest-cov",

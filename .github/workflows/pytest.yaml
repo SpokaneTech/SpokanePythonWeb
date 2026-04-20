@@ -1,4 +1,4 @@
-name: Unittest Execution (pytest)
+name: Unittest Execution
 
 on:
   push:

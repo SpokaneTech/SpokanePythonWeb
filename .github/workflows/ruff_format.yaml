@@ -1,4 +1,4 @@
-name: Code Consistency Check (ruff format)
+name: Code Consistency Check
 
 on:
   push:

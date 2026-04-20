@@ -1,4 +1,4 @@
-name: Code Metrics Analysis (radon)
+name: Code Metrics Analysis
 
 on:
   push:
