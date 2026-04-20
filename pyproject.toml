@@ -88,6 +88,7 @@ ignore_unused = [
     "mypy",
     "mypy-extensions",
     "ruff",
+    "pip-audit",
     "psycopg2-binary",
     "pytest",
     "pytest-cov",

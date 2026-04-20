@@ -15,6 +15,7 @@ https://www.spokanepython.com
 |FawltyDeps|dependency consistency check|![Lint](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/fawltydeps.yaml/badge.svg)|
 |Isort|python import ordering|![Isort](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/isort.yaml/badge.svg)|
 |Mypy|static type checking|![Mypy](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/mypy.yaml/badge.svg)|
+|Pip Audit|dependency vulnerability scan|![Audit](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/pip_audit.yaml/badge.svg)|
 |Radon|code complexity analysis|![Radon](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/radon.yaml/badge.svg)|
 |Ruff Format|code formatting|![Format](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/ruff_format.yaml/badge.svg)|
 |Ruff Lint|static code analysis|![Lint](https://github.com/SpokaneTech/SpokanePythonWeb/actions/workflows/ruff_lint.yaml/badge.svg)|

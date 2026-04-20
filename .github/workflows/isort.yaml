@@ -1,4 +1,4 @@
-name: Import Order Validation (isort)
+name: Import Order Validation
 
 on:
   push:

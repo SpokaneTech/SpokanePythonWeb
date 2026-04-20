@@ -1,4 +1,4 @@
-name: Dependency Consistency Check (fawltydeps)
+name: Dependency Consistency Check
 
 on:
   pull_request:

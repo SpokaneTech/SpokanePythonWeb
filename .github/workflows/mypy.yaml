@@ -1,4 +1,4 @@
-name: Type Checking (mypy)
+name: Type Checking
 
 on:
   push:

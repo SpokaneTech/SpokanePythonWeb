@@ -1,4 +1,4 @@
-name: Static Code Analysis (ruff lint)
+name: Static Code Analysis
 
 on:
   push:

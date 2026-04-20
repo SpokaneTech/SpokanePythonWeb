@@ -1,4 +1,4 @@
-name: Dependency Consistency Check (pip-audit)
+name: Dependency Vulnerability Scan
 
 on:
   pull_request:
