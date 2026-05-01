@@ -14,15 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from core.views import robots_txt
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
+from web.sitemaps import sitemaps
+
+from core.views import robots_txt
 
 urlpatterns = [
     # Django provided URLs
@@ -35,8 +38,9 @@ urlpatterns = [
     path("rest/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("rest/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
     path("rest/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    # project level URLs
+    # SEO URLs
     path("robots.txt", robots_txt),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
     # URLs to local apps
     path("", include("web.urls", namespace="web")),
 ]

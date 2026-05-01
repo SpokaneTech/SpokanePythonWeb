@@ -12,4 +12,5 @@ User-Agent: *
 Disallow: /__debug__/
 Disallow: /accounts/
 Disallow: /admin/
+Sitemap: https://spokanepython.com/sitemap.xml
 """
