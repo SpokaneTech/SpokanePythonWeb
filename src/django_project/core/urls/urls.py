@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from core.views import robots_txt
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
@@ -24,8 +25,6 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from web.sitemaps import sitemaps
-
-from core.views import robots_txt
 
 urlpatterns = [
     # Django provided URLs
