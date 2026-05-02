@@ -1,5 +1,5 @@
 # === STAGE 1: Build dependencies in a virtual environment ===
-FROM python:3.12-alpine AS builder
+FROM python:3.13-alpine AS builder
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ RUN pip install .[docker]
 
 
 # === STAGE 2: Runtime with only necessary files ===
-FROM python:3.12-alpine
+FROM python:3.13-alpine
 
 ARG IMAGE_TAG=dev
 ENV IMAGE_TAG=${IMAGE_TAG}

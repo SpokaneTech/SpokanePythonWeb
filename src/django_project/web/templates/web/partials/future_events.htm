@@ -1,4 +1,24 @@
 {% for event in events %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ event.name|escapejs }}",
+  "startDate": "{{ event.start_date_time|date:'c' }}",
+  "endDate": "{{ event.end_date_time|date:'c' }}",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Spokane Python User Group",
+    "url": "https://spokanepython.com"
+  }{% if event.location %},
+  "location": {
+    "@type": "Place",
+    "name": "{{ event.location|escapejs }}"
+  }{% endif %}{% if event.description %},
+  "description": "{{ event.description|escapejs }}"{% endif %}{% if event.url %},
+  "url": "{{ event.url|escapejs }}"{% endif %}
+}
+</script>
 <div class="card scroll-card shadow">
     <div class="card-body d-flex flex-column">
         <h4 class="card-title fw-bold text-primary mb-3">{{ event.name }}</h4>

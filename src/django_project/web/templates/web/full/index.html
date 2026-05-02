@@ -23,11 +23,25 @@
     <meta property="og:title" content="Spokane Python User Group">
     <meta property="og:description"
         content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
-    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:url" content="https://spokanepython.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Spokane Python User Group">
+    <meta property="og:image" content="https://spokanepython.com/static/spokanepython/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spokane Python User Group">
+    <meta name="twitter:description" content="Spokane's premiere local Python user group. Join us for meetups, workshops, and community events to learn and grow in Python programming.">
+    <meta name="twitter:image" content="https://spokanepython.com/static/spokanepython/img/favicon.png">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://spokanepython.com/">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'spokanepython/img/favicon.png' %}">
 
     <title>Spokane Python User Group</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Preconnect for external font resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="{% static 'spokanepython/css/spug.css' %}">
 
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
@@ -36,8 +50,6 @@
             padding-top: 70px;
             background-color: #f1f1f1
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
         body {
             font-family: 'Ubuntu', Arial, sans-serif;
@@ -134,6 +146,24 @@
         opacity: .2 !important; 
         }
     </style>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Spokane Python User Group",
+      "url": "https://spokanepython.com",
+      "description": "Spokane's premiere local Python user group. We host monthly meetups, workshops, and community events for Python developers of all levels.",
+      "sameAs": [
+        "https://www.meetup.com/python-spokane",
+        "https://github.com/SpokaneTech",
+        "https://discord.gg/wHrSJNgpnP",
+        "https://www.linkedin.com/company/spokanetech/",
+        "https://www.facebook.com/spokanetech.org/"
+      ]
+    }
+    </script>
 
 </head>
 
